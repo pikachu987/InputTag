@@ -1,0 +1,14 @@
+PODS:
+  - InputTag (0.1.0)
+
+DEPENDENCIES:
+  - InputTag (from `../`)
+
+EXTERNAL SOURCES:
+  InputTag:
+    :path: ../
+
+SPEC CHECKSUMS:
+  InputTag: ddd26a773169e528eaa3834ab8d703ee8a55ac7e
+
+COCOAPODS: 0.39.0
