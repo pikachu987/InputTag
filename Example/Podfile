@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'InputTag_Example' do
+  pod 'InputTag', :path => '../'
+
+  target 'InputTag_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
