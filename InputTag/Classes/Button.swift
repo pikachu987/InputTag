@@ -25,6 +25,7 @@ public class Button : UIButton{
         self.rectEdge = rectEdge
         self.setTitle(title, forState: .Normal)
         self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
         self.borderWidth = borderWidth
         self.cornerRadius = borderRadius
         self.setTitleColor(color, forState: .Normal)
@@ -71,12 +72,12 @@ public class Button : UIButton{
     
     
     //callback
-    private var callback : (Void -> Void)!
-    public func callBack(callback: (Void -> Void)){
+    private var callback : (Button -> Void)!
+    public func callBack(callback: (Button -> Void)){
         self.callback = callback
         self.addTarget(self, action: #selector(self.click(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
-    @objc private func click(sender: UIButton) {
-        self.callback()
+    @objc private func click(sender: Button) {
+        self.callback(sender)
     }
 }

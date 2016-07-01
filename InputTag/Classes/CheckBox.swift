@@ -30,6 +30,7 @@ public class CheckBox : UIButton{
         self.frame = frame
         self.rectEdge = rectEdge
         self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
         self.setTitleColor(color, forState: .Normal)
         let width = self.frame.width
         let height = self.frame.height
@@ -92,13 +93,13 @@ public class CheckBox : UIButton{
     
     
     //callback
-    private var callback : (Void -> Void)!
-    public func callBack(callback: (Void -> Void)){
+    private var callback : (CheckBox -> Void)!
+    public func callBack(callback: (CheckBox -> Void)){
         self.callback = callback
         self.addTarget(self, action: #selector(self.click(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
-    @objc private func click(sender: UIButton) {
-        self.callback()
+    @objc private func click(sender: CheckBox) {
+        self.callback(sender)
     }
     
     //checkAction

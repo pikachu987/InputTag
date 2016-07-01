@@ -25,6 +25,7 @@ public class Text : UITextField{
         self.frame = frame
         self.rectEdge = rectEdge
         self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
         self.borderWidth = borderWidth
         self.cornerRadius = cornerRadius
         self.text = value
@@ -83,12 +84,21 @@ public class Text : UITextField{
     }
     
     //callback
-    private var callback : (Void -> Void)!
-    public func callBack(callback: (Void -> Void)){
+    private var callback : (Text -> Void)!
+    public func callBack(callback: (Text -> Void)){
         self.callback = callback
-        self.addTarget(self, action: #selector(self.click(_:)), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(self.click(_:)), forControlEvents: .TouchDown)
     }
-    @objc private func click(sender: UITextField) {
-        self.callback()
+    @objc private func click(sender: Text) {
+        self.callback(sender)
+    }
+    //textWrite
+    private var editCallback : (Text -> Void)!
+    public func editCallback(callback: (Text -> Void)){
+        self.editCallback = callback
+        self.addTarget(self, action: #selector(self.editing(_:)), forControlEvents: .EditingChanged)
+    }
+    @objc private func editing(sender: Text) {
+        self.editCallback(sender)
     }
 }

@@ -34,6 +34,7 @@ public class Radio : UIButton{
         self.value = value
         self.rectEdge = rectEdge
         self.backgroundColor = backgroundColor
+        self.borderColor = borderColor
         let width = self.frame.width
         let height = self.frame.height
         var size : CGFloat
@@ -102,13 +103,13 @@ public class Radio : UIButton{
     
     
     //callback
-    private var callback : (Void -> Void)!
-    public func callBack(callback: (Void -> Void)){
+    private var callback : (Radio -> Void)!
+    public func callBack(callback: (Radio -> Void)){
         self.callback = callback
         self.addTarget(self, action: #selector(self.click(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
-    @objc private func click(sender: UIButton) {
-        self.callback()
+    @objc private func click(sender: Radio) {
+        self.callback(sender)
     }
     
     //selectAction
