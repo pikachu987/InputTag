@@ -50,6 +50,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(checkBox5)
         self.view.addSubview(checkBox6)
         
+        
+        
         //callback Function
         checkBox1.callBack { (_) in
             userActionClickNumber += 1
